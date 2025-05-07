@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Providers from "@/Providers";
 import { type Metadata } from "next";
 import { Geist } from "next/font/google";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Auth Starter",
@@ -24,7 +25,9 @@ export default function RootLayout({
       <body>
         <Providers>
           <Navbar />
-          <main>{children}</main>
+          <main>
+            <Suspense>{children}</Suspense>
+          </main>
         </Providers>
       </body>
     </html>

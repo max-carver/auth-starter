@@ -15,6 +15,15 @@ interface ButtonProps {
     | "success"
     | "warning"
     | "danger";
+  variant?:
+    | "flat"
+    | "solid"
+    | "bordered"
+    | "light"
+    | "faded"
+    | "shadow"
+    | "ghost";
+  onPress?: () => void;
 }
 
 const Button = ({
@@ -25,7 +34,9 @@ const Button = ({
   endContent,
   size = "sm",
   radius = "sm",
-  color = "secondary",
+  color = "primary",
+  variant = "solid",
+  onPress,
 }: ButtonProps) => {
   return (
     <Btn
@@ -37,6 +48,8 @@ const Button = ({
       startContent={startContent}
       endContent={endContent}
       color={color}
+      variant={variant}
+      onPress={onPress}
     >
       {children}
     </Btn>
