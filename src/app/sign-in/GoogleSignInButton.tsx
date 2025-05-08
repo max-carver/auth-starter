@@ -1,7 +1,7 @@
 "use client";
 
 import Button from "@/components/ui/Button";
-import { signInWithGoogle } from "@/server/signInWithGoogle";
+import { signInWithGoogle } from "@/server/auth/signInWithGoogle";
 import { FcGoogle } from "react-icons/fc";
 
 const GoogleSignInButton = () => {

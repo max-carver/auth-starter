@@ -1,4 +1,4 @@
-import { auth } from "@/server/auth";
+import { auth } from "@/server/auth/auth";
 
 const ProfilePage = async () => {
   const session = await auth();

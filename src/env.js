@@ -7,7 +7,7 @@ export const env = createEnv({
       process.env.NODE_ENV === "production"
         ? z.string()
         : z.string().optional(),
-    DATABASE_URL: z.string().url(),
+    DATABASE_URL: z.string(),
     NODE_ENV: z.enum(["development", "production"]).default("development"),
     AUTH_GOOGLE_ID: z.string(),
     AUTH_GOOGLE_SECRET: z.string(),

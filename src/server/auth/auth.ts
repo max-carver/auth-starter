@@ -1,3 +1,5 @@
+import db from "@/server/db/db";
+import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 
@@ -8,6 +10,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   pages: {
     signIn: "/sign-in",
   },
+  adapter: DrizzleAdapter(db),
   providers: [
     Google({
       clientId: googleId,
