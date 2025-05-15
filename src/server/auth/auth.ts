@@ -1,10 +1,8 @@
+import { env } from "@/env";
 import db from "@/server/db/db";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
-
-const googleId = String(process.env.AUTH_GOOGLE_ID).trim();
-const googleSecret = String(process.env.AUTH_GOOGLE_SECRET).trim();
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   pages: {
@@ -13,10 +11,15 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: DrizzleAdapter(db),
   providers: [
     Google({
-      clientId: googleId,
-      clientSecret: googleSecret,
+      clientId: env.AUTH_GOOGLE_ID,
+      clientSecret: env.AUTH_GOOGLE_SECRET,
     }),
   ],
 
-  callbacks: {},
+  callbacks: {
+    session({ session, user }) {
+      session.user.id = user.id;
+      return session;
+    },
+  },
 });
